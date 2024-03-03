@@ -29,7 +29,7 @@
 // Types
 
 // Structure to hold data for the autoclick thread
-typedef struct AutoclickThreadData
+typedef struct
 {
     Display *display;
 } AutoclickThreadData;
