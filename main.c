@@ -4,7 +4,7 @@
 // Version: 1.0
 // Description: Autoclicker for UNIX
 // Compile: build.sh
-// Date: 27.2.2024
+// Date: 3.3.2024
 // =============================================
 
 // Standard library headers
