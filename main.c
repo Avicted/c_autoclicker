@@ -37,7 +37,7 @@ typedef struct
 // Variables
 internal bool volatile autoclick = false;
 internal bool volatile autoclick_thread_running = false; // Track if the autoclick thread is running
-internal const size_t clicks_hertz = 368;
+internal const size_t clicks_hertz = 256;
 
 internal void
 pause_but_do_not_sleep(int delay)
