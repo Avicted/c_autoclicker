@@ -37,7 +37,7 @@ typedef struct
 // Variables
 internal bool volatile autoclick = false;
 internal bool volatile autoclick_thread_running = false; // Track if the autoclick thread is running
-internal const size_t clicks_hertz = 256;
+internal const size_t clicks_hertz = 1024;
 
 internal void
 pause_but_do_not_sleep(int delay)
@@ -54,7 +54,7 @@ pause_but_do_not_sleep(int delay)
 internal void *
 autoclick_thread(void *arg)
 {
-    struct AutoclickThreadData *data = (struct AutoclickThreadData *)arg;
+    AutoclickThreadData *data = (AutoclickThreadData *)arg;
     Display *display = data->display;
 
     while (autoclick)
@@ -106,8 +106,9 @@ int main(void)
     XGrabKey(display, XKeysymToKeycode(display, XK_Scroll_Lock), AnyModifier, root,
              True, GrabModeAsync, GrabModeAsync);
 
-    // Initialize autoclick thread data
-    struct AutoclickThreadData autoclick_thread_data;
+    // Initialize autoclick thread data with calloc
+    AutoclickThreadData autoclick_thread_data = {0};
+
     autoclick_thread_data.display = display;
 
     pthread_t thread_id;
@@ -158,6 +159,8 @@ int main(void)
     // Cleanup
     XUngrabKey(display, XKeysymToKeycode(display, XK_Scroll_Lock), AnyModifier, root);
     XCloseDisplay(display);
+
+    free(&autoclick_thread_data); // Free the autoclick thread data (not really necessary, but good practice
 
     return (0);
 }
