@@ -26,7 +26,7 @@ CXXFLAGS="-O3 -Wall -Wextra -Wpedantic -Werror -Wno-unused-variable -Wno-unused-
 # Compile the program
 echo "Compiling autoclicker"
 
-$CC main.c -o autoclicker $CXXFLAGS -lX11 -lXtst && echo "Compilation successful" || echo "Compilation failed"
+$CC ./src/main.c -o autoclicker $CXXFLAGS -lX11 -lXtst && echo "Compilation successful" || echo "Compilation failed"
 
 # End measuring time
 end=`date +%s`
