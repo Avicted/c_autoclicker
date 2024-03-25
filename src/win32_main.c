@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#include <Windows.h>
+#include <windows.h>
 
 // Defines
 #define internal static // Internal for the translation unit
